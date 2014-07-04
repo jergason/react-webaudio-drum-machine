@@ -34,9 +34,16 @@ var App = React.createClass({
     instrumentStore.changed = this.render.bind(this);
   },
   componentDidMount: function() {
-    // todo: start ticking
-    //console.log('start ticking');
-    setInterval(this.tick.bind(this), 500);
+    this.interval = setInterval(this.tick, 500);
+  },
+  togglePause: function() {
+    if (this.state.paused) {
+      this.interval = setInterval(this.tick, 500);
+    } else {
+      clearInterval(this.interval);
+    }
+
+    this.setState({ paused: !this.state.paused });
   },
   render: function() {
     var self = this;
@@ -59,6 +66,7 @@ var App = React.createClass({
     return (
     <div className="drum-machine">
       <h1>DOMSTEP</h1>
+      <button onClick={this.togglePause}>{this.state.paused ? "Play" : "Pause"}</button>
       {beats}
     </div>);
   }

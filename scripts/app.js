@@ -31,10 +31,23 @@ var App = React.createClass({
           loaded: true
         });
     }).done();
-    instrumentStore.changed = this.render.bind(this);
+    instrumentStore.changed = this.instrumentChanged;
+  },
+  instrumentChanged: function() {
+    window.location.hash = instrumentStore.serialize();
+    //var res = instrumentStore.serialize();
+    this.render();
   },
   componentDidMount: function() {
     this.interval = setInterval(this.tick, 500);
+
+    // check url hash for state
+    var drumMachineHash = window.location.hash;
+    // chop off leading #
+    if (drumMachineHash[0] == '#') {
+      drumMachineHash = drumMachineHash.slice(1);
+    }
+    instrumentStore.deserialize(drumMachineHash);
   },
   togglePause: function() {
     if (this.state.paused) {

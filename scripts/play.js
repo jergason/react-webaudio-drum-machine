@@ -3,7 +3,10 @@ function buffer(buffer, ctx) {
   source.buffer = buffer;
   source.connect(ctx.destination);
   source.noteOn(0);
-  source.noteOff(0.3);
+  setTimeout(function() {
+    source.noteOff(0);
+    source.disconnect();
+  }, 300);
 }
 
 function note(frequency, ctx) {
@@ -11,7 +14,10 @@ function note(frequency, ctx) {
   source.frequency.value = frequency;
   source.connect(ctx.destination);
   source.noteOn(0);
-  source.noteOff(0.3);
+  setTimeout(function() {
+    source.noteOff(0);
+    source.disconnect();
+  }, 300);
 }
 
 module.exports = {

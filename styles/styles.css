@@ -1,0 +1,80 @@
+body {
+  font-family: "Helvetica Neue", Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/*
+ * Loading animation
+ */
+@-webkit-keyframes opacity {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@-moz-keyframes opacity {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.loading {
+  margin: 100px 0 0 0;
+  text-align: center;
+}
+
+.loading p {
+}
+
+.loading p span {
+  -webkit-animation-name: opacity;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+
+  -moz-animation-name: opacity;
+  -moz-animation-duration: 1s;
+  -moz-animation-iteration-count: infinite;
+}
+
+.loading p span:nth-child(2) {
+  -webkit-animation-delay: 100ms;
+  -moz-animation-delay: 100ms;
+}
+
+.loading p span:nth-child(3) {
+  -webkit-animation-delay: 300ms;
+  -moz-animation-delay: 300ms;
+}
+
+.drum-machine {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1200px;
+}
+
+.beat {
+  float: left;
+  margin: 10px;
+  transition : border 100ms ease-out;
+  border: 5px solid rgba(0, 0, 0, 0.0);
+}
+
+.beat.active {
+  border: 5px solid blue;
+}
+
+article.instrument {
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  transition : background-color 40ms ease-out;
+  margin: 9px 0 5px;
+}
+
+article.instrument.selected {
+  width: 40px;
+  height: 40px;
+  background-color: blue;
+  margin: 9px 0 5px;
+}

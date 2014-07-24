@@ -5,7 +5,9 @@ var Beat = require('./beat');
 var utils = require('./utils');
 var instrumentStore = require('./instrumentStore');
 
-var ctx = new webkitAudioContext();
+var AudioContext = window.AudioContext || window.webkitAudioContext;
+
+var ctx = new AudioContext();
 
 var App = React.createClass({
   getInitialState: function() {

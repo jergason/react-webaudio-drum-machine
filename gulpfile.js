@@ -21,4 +21,4 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task('default', ['dist', 'watch']);
+gulp.task('default', ['build', 'watch']);

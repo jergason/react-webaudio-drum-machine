@@ -19330,7 +19330,7 @@ var App = React.createClass({displayName: 'App',
   },
   componentWillMount: function() {
     var self = this;
-    loadBuffers(['/sounds/tss.wav', '/sounds/pah.wav', '/sounds/doo.wav'], this.props.ctx)
+    loadBuffers(['./sounds/tss.wav', './sounds/pah.wav', './sounds/doo.wav'], this.props.ctx)
     .spread(function(b1, b2, b3) {
         console.log('we loaded wooo');
         self.buffers = [b1, b2, b3];
